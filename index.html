@@ -11,6 +11,10 @@
       padding: 0;
     }
 
+    html, body {
+      overflow-x: hidden;
+    }
+
     body {
       font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
       min-height: 100vh;
@@ -19,7 +23,6 @@
         radial-gradient(circle at bottom right, rgba(255,244,214,0.55), transparent 35%),
         linear-gradient(135deg, #fff9f0 0%, #ffeccf 45%, #f9d9b6 100%);
       color: #5c3a21;
-      overflow-x: hidden;
       position: relative;
     }
 
@@ -33,6 +36,7 @@
       background: rgba(255, 255, 255, 0.18);
       filter: blur(10px);
       z-index: 0;
+      pointer-events: none;
     }
 
     body::before {
@@ -75,6 +79,7 @@
       color: #8c5a2d;
       margin-bottom: 14px;
       text-shadow: 0 2px 0 rgba(255,255,255,0.6);
+      line-height: 1.25;
     }
 
     .hero p {
@@ -113,6 +118,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      min-width: 0;
     }
 
     .slider-frame {
@@ -137,9 +143,11 @@
 
     .slide {
       min-width: 100%;
+      width: 100%;
       height: 100%;
       position: relative;
       flex-shrink: 0;
+      overflow: hidden;
       user-select: none;
     }
 
@@ -147,6 +155,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
       pointer-events: none;
       user-select: none;
@@ -200,6 +209,7 @@
       display: flex;
       gap: 10px;
       z-index: 3;
+      flex-wrap: nowrap;
     }
 
     .dot {
@@ -211,6 +221,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
       cursor: pointer;
       transition: all 0.25s ease;
+      flex: 0 0 auto;
     }
 
     .dot.active {
@@ -224,9 +235,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      min-width: 0;
       background:
         linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,250,240,0.7)),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23e9c48c' stroke-width='1.3' opacity='0.45'%3E%3Cpath d='M22 52c8-18 29-28 47-22 17 6 30 25 23 45-7 18-28 30-48 24C24 94 13 72 22 52Z'/%3E%3Cpath d='M84 22c8-4 17-2 23 5 7 7 8 18 2 26-5 8-16 11-25 7-9-4-14-14-11-23 2-7 6-12 11-15Z'/%3E%3C/g%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23e9c48c' stroke-width='1.3' opacity='0.45'%3E%3Cpath d='M22 52c8-18 29-28 47-22 17 6 30 25 23 45-7 18-28 30-48 24C24 94 13 72 22 52Z'/%3E%3Cpath d='M84 22c8-4 17-2 23 5 7 7 8 18 2 26-5 8-16 11-25 7-9-4-14-11-23 2-7 11-15Z'/%3E%3C/g%3E%3C/svg%3E");
       background-size: auto, 180px;
     }
 
@@ -234,6 +246,7 @@
       font-size: 34px;
       color: #9b5d1e;
       margin-bottom: 14px;
+      line-height: 1.3;
     }
 
     .content-area .subtitle {
@@ -241,6 +254,7 @@
       color: #8a674b;
       margin-bottom: 24px;
       line-height: 1.8;
+      word-break: break-word;
     }
 
     .info-box {
@@ -256,12 +270,14 @@
       font-size: 20px;
       color: #7d4d21;
       margin-bottom: 10px;
+      line-height: 1.3;
     }
 
     .info-box p {
       color: #6d543d;
       line-height: 1.9;
       font-size: 16px;
+      word-break: break-word;
     }
 
     .blessing {
@@ -273,6 +289,7 @@
       color: #76563b;
       line-height: 1.9;
       font-size: 16px;
+      word-break: break-word;
     }
 
     .footer-note {
@@ -281,6 +298,7 @@
       color: #8a6a51;
       font-size: 15px;
       letter-spacing: 1px;
+      line-height: 1.6;
     }
 
     @media (max-width: 900px) {
@@ -288,16 +306,17 @@
         grid-template-columns: 1fr;
       }
 
-      .content-area {
-        padding: 30px 22px 34px;
-      }
-
       .slider-area {
         padding: 18px;
       }
 
       .slider-frame {
+        max-width: 100%;
         aspect-ratio: 4 / 5;
+      }
+
+      .content-area {
+        padding: 30px 22px 34px;
       }
     }
 
@@ -306,8 +325,32 @@
         padding: 28px 14px 42px;
       }
 
+      .tag {
+        font-size: 12px;
+        padding: 7px 14px;
+      }
+
+      .hero .horse {
+        font-size: 36px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
       .hero p {
         font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .slider-area {
+        padding: 14px;
+      }
+
+      .slider-frame {
+        aspect-ratio: 4 / 5;
+        border-width: 4px;
+        border-radius: 18px;
       }
 
       .content-area h2 {
@@ -320,10 +363,45 @@
         font-size: 15px;
       }
 
+      .info-box {
+        padding: 18px 16px;
+        border-radius: 16px;
+      }
+
+      .blessing {
+        padding: 16px;
+      }
+
       .nav-btn {
         width: 42px;
         height: 42px;
         font-size: 22px;
+      }
+
+      .nav-btn.prev {
+        left: 10px;
+      }
+
+      .nav-btn.next {
+        right: 10px;
+      }
+
+      .dots {
+        bottom: 12px;
+        gap: 8px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+      }
+
+      .dot.active {
+        width: 24px;
+      }
+
+      .footer-note {
+        font-size: 14px;
       }
     }
   </style>
@@ -333,10 +411,10 @@
     <section class="hero">
       <div class="horse">🐴</div>
       <div class="tag">HORSE YEAR BABY</div>
-      <h1>馬年小王子・黃禹喆滿月囉!</h1>
+      <h1>小王子・黃禹喆</h1>
       <p>
         迎來我們最珍貴的小寶貝，<br />
-        用溫柔的光影，收藏這份滿月的喜悅與祝福。
+        用溫柔的光影，與您分享這份滿月的喜悅與祝福。
       </p>
     </section>
 
@@ -349,6 +427,7 @@
             <div class="slide"><img src="photo3.jpg" alt="男寶寶彌月照片3"></div>
             <div class="slide"><img src="photo4.jpg" alt="男寶寶彌月照片4"></div>
             <div class="slide"><img src="photo5.jpg" alt="男寶寶彌月照片5"></div>
+            <div class="slide"><img src="photo6.jpg" alt="男寶寶彌月照片6"></div>
           </div>
 
           <button class="nav-btn prev" id="prevBtn" aria-label="上一張">‹</button>
@@ -360,19 +439,20 @@
             <button class="dot" aria-label="切換到第3張"></button>
             <button class="dot" aria-label="切換到第4張"></button>
             <button class="dot" aria-label="切換到第5張"></button>
+            <button class="dot" aria-label="切換到第6張"></button>
           </div>
         </div>
       </div>
 
       <div class="content-area">
-        <h2>彌月之喜</h2>
+        <h2>小小的你，大大的福氣</h2>
         <p class="subtitle">
-          小小的你，帶著滿滿福氣來到我們身邊。<br />
-          在馬年的祝福裡，願你平安健康、自在奔馳、快樂長大。
+          來到我們身邊的每一天，都添上一份甜甜的幸福。<br />
+		  在馬年的祝福裡，願你平安健康、自在奔馳、快樂長大。
         </p>
 
         <div class="info-box">
-          <h3>帥哥介紹</h3>
+          <h3>寶貝介紹</h3>
           <p>
             我們的禹喆，像陽光一樣溫暖，<br />
             像晨風一樣輕柔，為家裡帶來最甜蜜的新篇章。
@@ -388,7 +468,7 @@
         </div>
 
         <div class="blessing">
-          「以滿月之名，記錄你來到這世界的第一份可愛與珍貴，圍繞著大家的關愛，感謝大家的祝福。」
+          「迎來寶寶滿月的喜悅時刻，誠摯感謝大家一路以來的關心、照顧與祝福。藉由這份小小心意，與大家分享我們滿滿的幸福與喜悅。」
         </div>
       </div>
     </section>
@@ -411,7 +491,6 @@
 
     function updateSlider() {
       slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-
       dots.forEach((dot, index) => {
         dot.classList.toggle("active", index === currentIndex);
       });
@@ -461,13 +540,13 @@
     sliderFrame.addEventListener("mouseenter", stopAutoPlay);
     sliderFrame.addEventListener("mouseleave", startAutoPlay);
 
-    // 手機左右滑動
     let startX = 0;
     let endX = 0;
     let isDragging = false;
 
     sliderFrame.addEventListener("touchstart", (e) => {
       startX = e.touches[0].clientX;
+      endX = startX;
       isDragging = true;
       stopAutoPlay();
     }, { passive: true });
@@ -496,7 +575,6 @@
       startAutoPlay();
     });
 
-    // 桌機鍵盤左右鍵
     document.addEventListener("keydown", (e) => {
       if (e.key === "ArrowLeft") {
         prevSlide();
