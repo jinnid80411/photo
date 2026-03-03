@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>馬年男寶寶彌月照片</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.55), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(255,244,214,0.55), transparent 35%),
+        linear-gradient(135deg, #fff9f0 0%, #ffeccf 45%, #f9d9b6 100%);
+      color: #5c3a21;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.18);
+      filter: blur(10px);
+      z-index: 0;
+    }
+
+    body::before {
+      top: -80px;
+      left: -80px;
+    }
+
+    body::after {
+      bottom: -100px;
+      right: -80px;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 20px 70px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: linear-gradient(90deg, #c98c2a, #e7b85e);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      letter-spacing: 2px;
+      box-shadow: 0 8px 20px rgba(201, 140, 42, 0.25);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 52px);
+      color: #8c5a2d;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 0 rgba(255,255,255,0.6);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #7b5b42;
+      line-height: 1.8;
+    }
+
+    .hero .horse {
+      font-size: 42px;
+      margin-bottom: 12px;
+      animation: floatHorse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes floatHorse {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .main-card {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.55);
+      border-radius: 28px;
+      box-shadow: 0 18px 45px rgba(117, 79, 38, 0.15);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      min-height: 560px;
+    }
+
+    .slider-area {
+      position: relative;
+      background: linear-gradient(160deg, #fff6e7 0%, #ffe5bf 100%);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider-frame {
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      aspect-ratio: 4 / 5;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(118, 78, 27, 0.18);
+      border: 6px solid rgba(255,255,255,0.8);
+      background: #fff;
+      touch-action: pan-y;
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.45s ease;
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(92,58,33,0.18), rgba(92,58,33,0.03));
+      pointer-events: none;
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.82);
+      color: #8c5a2d;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 3;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      transition: all 0.25s ease;
+    }
+
+    .nav-btn:hover {
+      background: #fff;
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .nav-btn.prev {
+      left: 14px;
+    }
+
+    .nav-btn.next {
+      right: 14px;
+    }
+
+    .dots {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.75);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .dot.active {
+      width: 28px;
+      border-radius: 999px;
+      background: #d39b45;
+    }
+
+    .content-area {
+      padding: 42px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,250,240,0.7)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='%23e9c48c' stroke-width='1.3' opacity='0.45'%3E%3Cpath d='M22 52c8-18 29-28 47-22 17 6 30 25 23 45-7 18-28 30-48 24C24 94 13 72 22 52Z'/%3E%3Cpath d='M84 22c8-4 17-2 23 5 7 7 8 18 2 26-5 8-16 11-25 7-9-4-14-14-11-23 2-7 6-12 11-15Z'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: auto, 180px;
+    }
+
+    .content-area h2 {
+      font-size: 34px;
+      color: #9b5d1e;
+      margin-bottom: 14px;
+    }
+
+    .content-area .subtitle {
+      font-size: 18px;
+      color: #8a674b;
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+
+    .info-box {
+      background: rgba(255, 248, 237, 0.9);
+      border: 1px solid rgba(217, 176, 112, 0.28);
+      border-radius: 20px;
+      padding: 22px 20px;
+      margin-bottom: 18px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+    }
+
+    .info-box h3 {
+      font-size: 20px;
+      color: #7d4d21;
+      margin-bottom: 10px;
+    }
+
+    .info-box p {
+      color: #6d543d;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .blessing {
+      margin-top: 10px;
+      padding: 18px 20px;
+      border-left: 5px solid #d7a14b;
+      background: rgba(255,255,255,0.75);
+      border-radius: 16px;
+      color: #76563b;
+      line-height: 1.9;
+      font-size: 16px;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 28px;
+      color: #8a6a51;
+      font-size: 15px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 900px) {
+      .main-card {
+        grid-template-columns: 1fr;
+      }
+
+      .content-area {
+        padding: 30px 22px 34px;
+      }
+
+      .slider-area {
+        padding: 18px;
+      }
+
+      .slider-frame {
+        aspect-ratio: 4 / 5;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrapper {
+        padding: 28px 14px 42px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .content-area h2 {
+        font-size: 28px;
+      }
+
+      .content-area .subtitle,
+      .info-box p,
+      .blessing {
+        font-size: 15px;
+      }
+
+      .nav-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <section class="hero">
+      <div class="horse">🐴</div>
+      <div class="tag">HORSE YEAR BABY</div>
+      <h1>馬年小王子・彌月寫真</h1>
+      <p>
+        迎來我們最珍貴的小寶貝，<br />
+        用溫柔的光影，收藏這份滿月的喜悅與祝福。
+      </p>
+    </section>
+
+    <section class="main-card">
+      <div class="slider-area">
+        <div class="slider-frame" id="sliderFrame">
+          <div class="slides" id="slides">
+            <div class="slide"><img src="photo1.jpg" alt="男寶寶彌月照片1"></div>
+            <div class="slide"><img src="photo2.jpg" alt="男寶寶彌月照片2"></div>
+            <div class="slide"><img src="photo3.jpg" alt="男寶寶彌月照片3"></div>
+            <div class="slide"><img src="photo4.jpg" alt="男寶寶彌月照片4"></div>
+            <div class="slide"><img src="photo5.jpg" alt="男寶寶彌月照片5"></div>
+          </div>
+
+          <button class="nav-btn prev" id="prevBtn" aria-label="上一張">‹</button>
+          <button class="nav-btn next" id="nextBtn" aria-label="下一張">›</button>
+
+          <div class="dots" id="dots">
+            <button class="dot active" aria-label="切換到第1張"></button>
+            <button class="dot" aria-label="切換到第2張"></button>
+            <button class="dot" aria-label="切換到第3張"></button>
+            <button class="dot" aria-label="切換到第4張"></button>
+            <button class="dot" aria-label="切換到第5張"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-area">
+        <h2>彌月之喜</h2>
+        <p class="subtitle">
+          小小的你，帶著滿滿福氣來到我們身邊。<br />
+          在馬年的祝福裡，願你平安健康、自在奔馳、快樂長大。
+        </p>
+
+        <div class="info-box">
+          <h3>寶寶介紹</h3>
+          <p>
+            我們的馬年男寶寶，像陽光一樣溫暖，<br />
+            像晨風一樣輕柔，為家裡帶來最甜蜜的新篇章。
+          </p>
+        </div>
+
+        <div class="info-box">
+          <h3>祝福心意</h3>
+          <p>
+            願你一生被愛包圍，眼裡有光，心中有夢；<br />
+            願你平安順遂，健康成長，擁有無限勇氣與幸福。
+          </p>
+        </div>
+
+        <div class="blessing">
+          「以滿月之名，記錄你來到這世界的第一份可愛與珍貴。」
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      ♡ 滿月紀念・專屬小王子的溫柔時光 ♡
+    </div>
+  </div>
+
+  <script>
+    const slides = document.getElementById("slides");
+    const sliderFrame = document.getElementById("sliderFrame");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const dots = document.querySelectorAll(".dot");
+    const totalSlides = dots.length;
+
+    let currentIndex = 0;
+    let autoPlay;
+
+    function updateSlider() {
+      slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentIndex);
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = (index + totalSlides) % totalSlides;
+      updateSlider();
+    }
+
+    function nextSlide() {
+      goToSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentIndex - 1);
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlay = setInterval(() => {
+        nextSlide();
+      }, 4000);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlay) clearInterval(autoPlay);
+    }
+
+    prevBtn.addEventListener("click", () => {
+      prevSlide();
+      startAutoPlay();
+    });
+
+    nextBtn.addEventListener("click", () => {
+      nextSlide();
+      startAutoPlay();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        goToSlide(index);
+        startAutoPlay();
+      });
+    });
+
+    sliderFrame.addEventListener("mouseenter", stopAutoPlay);
+    sliderFrame.addEventListener("mouseleave", startAutoPlay);
+
+    // 手機左右滑動
+    let startX = 0;
+    let endX = 0;
+    let isDragging = false;
+
+    sliderFrame.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+      stopAutoPlay();
+    }, { passive: true });
+
+    sliderFrame.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      endX = e.touches[0].clientX;
+    }, { passive: true });
+
+    sliderFrame.addEventListener("touchend", () => {
+      if (!isDragging) return;
+
+      const diff = startX - endX;
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+
+      startX = 0;
+      endX = 0;
+      isDragging = false;
+      startAutoPlay();
+    });
+
+    // 桌機鍵盤左右鍵
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+        startAutoPlay();
+      } else if (e.key === "ArrowRight") {
+        nextSlide();
+        startAutoPlay();
+      }
+    });
+
+    updateSlider();
+    startAutoPlay();
+  </script>
+</body>
+</html>
